@@ -36,4 +36,3 @@ int main(){
     std::cout << "프로그램 종료" << std::endl;
     return 0;
 }
-
