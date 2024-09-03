@@ -1,0 +1,21 @@
+
+ STEPControl_Reader
+     : STEP 파일을 열어서 내부의 데이터를 읽고, 이를 OCCT의 데이터 구조로 변환. ( 형상 데이터 및 간단한 속성 정보 )
+
+2 STEPControl_Writer
+     : OCCT의 데이터 구조에서 STEP 형식으로 데이터를 변환하여 파일로 저장.
+
+3 STEPControl_Controller
+     : STEPControl_Reader 와 STEPControl_Writer 를 포함.
+
+4 STEPControl_ActorReader
+     : STEP 파일에서 특정 유형의 데이터를 읽어 OCCT의 데이터 구조로 변환.
+
+5 STEPControl_ActorWriter
+     : 특정 유형의 데이터를 STEP 파일로 변환.
+
+6 STEPControl_StdValidation
+     : STEP 파일의 구조가 표준에 맞게 작성되었는지 검증.
+
+7 STEPControl_RepresentationsMapper
+     : STEP 파일의 다양한 표현 형식 ( BRep, wireframe, surface 등 )을 OCTT의 대응하는 데이터 구조로 변환.
