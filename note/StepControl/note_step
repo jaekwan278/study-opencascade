@@ -1,0 +1,64 @@
+< STEP vs STEPCAF >
+
+- STEPCAFCONTROL_READER
+     : STEP 파일의 복잡한 데이터와 메타데이터를 완전히 읽어들이고 OCCT의 다양한 데이터 구조로 변환.
+
+- STEPCONTROL_READER 
+     : STEP 파일의 기본적인 형상 데이터를 읽어들이고 OCCT의 데이터 구조로 변환.
+
+-------------------------------------------------------------------------------------------------------------------
+
+< STEPCONTROL 패키지 >
+
+@1 STEPControl_Reader
+     : STEP 파일을 열어서 내부의 데이터를 읽고, 이를 OCCT의 데이터 구조로 변환. ( 형상 데이터 및 간단한 속성 정보 )
+
+@2 STEPControl_Writer
+     : OCCT의 데이터 구조에서 STEP 형식으로 데이터를 변환하여 파일로 저장.
+
+@3 STEPControl_Controller
+     : STEPControl_Reader 와 STEPControl_Writer 를 포함.
+
+@4 STEPControl_ActorReader
+     : STEP 파일에서 특정 유형의 데이터를 읽어 OCCT의 데이터 구조로 변환.
+
+@5 STEPControl_ActorWriter
+     : 특정 유형의 데이터를 STEP 파일로 변환.
+
+@6 STEPControl_StdValidation
+     : STEP 파일의 구조가 표준에 맞게 작성되었는지 검증.
+
+@7 STEPControl_RepresentationsMapper
+     : STEP 파일의 다양한 표현 형식 ( BRep, wireframe, surface 등 )을 OCTT의 대응하는 데이터 구조로 변환.
+
++1 STEPControl_StepModelType : 열거형 헤더파일.
+     
+     : STEPControl_ManifoldSolidBrep
+          # 설명 : 이 항목은 STEP 파일이 Manifold Solid B-Rep(경계 표현) 형식의 모델을 포함하고 있음을 나타냅니다. B-Rep 형식은 3D 형상을 경계로 정의하는 방식으로, 일반적으로 면(face), 모서리(edge), 정점(vertex) 등의 요소로 구성됩니다.
+          - 사용 : 고체 모델링에서 많이 사용되며, 형상이 정확하게 정의되고 닫힌 경계를 가진 모델.
+          - OCCT 데이터 구조 : TopoDS_Shape, TopoDS_Solid, TopoDS_Face
+
+     : STEPControl_FacetedBrep
+          # 설명 : 이 항목은 STEP 파일이 Faceted B-Rep(다각형 경계 표현) 형식의 모델을 포함하고 있음을 나타냅니다. 이는 다각형 메쉬로 표현된 모델로, 주로 단순한 형상을 표현할 때 사용됩니다.
+          - 사용 : 단순한 3D 모델이나, 빠른 렌더링이 필요한 경우에 사용.
+          - OCCT 데이터 구조 : TopoDS_Shape, Poly_Triangulation
+
+     : STEPControl_GeometricCurveSet
+          # 설명 : 이 항목은 STEP 파일이 Geometric Curve Set(기하학적 곡선 집합) 형식의 데이터를 포함하고 있음을 나타냅니다. 곡선, 스플라인, 곡선 집합 등이 포함될 수 있습니다.
+          - 사용 : 2D 도면, 곡선 기반의 설계 데이터 등에서 사용.
+          - OCCT 데이터 구조 : Geom-Curve, Geom_BSplineCurve
+
+     : STEPControl_ShellBasedSurfaceModel
+          #- 설명 : 이 항목은 STEP 파일이 Shell-based Surface Model(셸 기반 표면 모델) 형식의 데이터를 포함하고 있음을 나타냅니다. 표면으로 정의된 모델로, 열린 표면이나 닫힌 껍질 형태의 구조가 될 수 있습니다.
+          - 사용 : 표면 모델링, 특히 비-고체 형상의 정의에서 사용.
+          - OCCT 데이터 구조 : TopoDS_Shell, TopoDS_Face
+
+     : STEPControl_GeometricSet
+          # 설명 : 이 항목은 STEP 파일이 Geometric Set(기하학적 집합) 형식의 데이터를 포함하고 있음을 나타냅니다. 이 유형은 점, 곡선, 표면 등 다양한 기하학적 요소를 포함할 수 있습니다.
+          - 사용 : 복합적인 기하학적 데이터의 집합을 처리할 때 사용.
+          - OCCT 데이터 구조 : Geom_Point, Geom_Surface
+
+     : STEPControl_GeometricSurfaceSet
+          # 설명 : 이 항목은 STEP 파일이 Geometric Surface Set(기하학적 표면 집합) 형식의 데이터를 포함하고 있음을 나타냅니다. 이는 여러 표면의 집합을 나타내며, 3D 모델의 표면 부분을 정의할 때 사용됩니다.
+          - 사용 : 복잡한 곡면을 정의하는 3D CAD 데이터에서 사용.
+          - OCCT 데이터 구조 : Geom_Surface

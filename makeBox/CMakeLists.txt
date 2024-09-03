@@ -4,7 +4,7 @@ project(makeBox)
 # 실행파일 설정
 add_executable(makeBox main.cpp)
 
-set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
+# set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
 
 # C++ 표준 설정
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")

@@ -226,8 +226,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/Users/jaekwan/WorkSpace/Cpp/opencascadeTest/study-opencascade/makeBox/build",
-		"source" : "/Users/jaekwan/WorkSpace/Cpp/opencascadeTest/study-opencascade/makeBox"
+		"build" : "/Users/jaekwan/WorkSpace/Cpp/opencascadeTest/study-opencascade/readStep/build",
+		"source" : "/Users/jaekwan/WorkSpace/Cpp/opencascadeTest/study-opencascade/readStep"
 	},
 	"version" : 
 	{

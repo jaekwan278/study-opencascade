@@ -1223,13 +1223,89 @@
 		{
 			"isGenerated" : true,
 			"path" : "build/CMakeFiles/3.30.2/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/lib/cmake/opencascade/OpenCASCADEConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/lib/cmake/opencascade/OpenCASCADEConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/lib/cmake/opencascade/OpenCASCADECompileDefinitionsAndFlags-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/lib/cmake/opencascade/OpenCASCADEFoundationClassesTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/lib/cmake/opencascade/OpenCASCADEFoundationClassesTargets-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/lib/cmake/opencascade/OpenCASCADEModelingDataTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/lib/cmake/opencascade/OpenCASCADEModelingDataTargets-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/lib/cmake/opencascade/OpenCASCADEModelingAlgorithmsTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/lib/cmake/opencascade/OpenCASCADEModelingAlgorithmsTargets-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/lib/cmake/opencascade/OpenCASCADEVisualizationTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/lib/cmake/opencascade/OpenCASCADEVisualizationTargets-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/lib/cmake/opencascade/OpenCASCADEApplicationFrameworkTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/lib/cmake/opencascade/OpenCASCADEApplicationFrameworkTargets-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/lib/cmake/opencascade/OpenCASCADEDataExchangeTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/lib/cmake/opencascade/OpenCASCADEDataExchangeTargets-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/lib/cmake/opencascade/OpenCASCADEDEToolsTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/lib/cmake/opencascade/OpenCASCADEDEToolsTargets-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/lib/cmake/opencascade/OpenCASCADEDrawTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/lib/cmake/opencascade/OpenCASCADEDrawTargets-release.cmake"
 		}
 	],
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/Users/jaekwan/WorkSpace/Cpp/opencascadeTest/study-opencascade/readStep/build",
-		"source" : "/Users/jaekwan/WorkSpace/Cpp/opencascadeTest/study-opencascade/readStep"
+		"build" : "/Users/jaekwan/WorkSpace/Cpp/opencascadeTest/study-opencascade/makeBox/build",
+		"source" : "/Users/jaekwan/WorkSpace/Cpp/opencascadeTest/study-opencascade/makeBox"
 	},
 	"version" : 
 	{

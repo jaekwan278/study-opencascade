@@ -462,10 +462,6 @@
 			"properties" : 
 			[
 				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
 					"name" : "HELPSTRING",
 					"value" : "No help, variable specified on the command line."
 				}
@@ -555,7 +551,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/jaekwan/workspace/Cpp/opencascadeTest/study-opencascade/makeBox"
+			"value" : "/Users/jaekwan/WorkSpace/Cpp/opencascadeTest/study-opencascade/makeBox"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
