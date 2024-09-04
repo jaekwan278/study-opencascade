@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5.0)
-project(readStep VERSION 0.1.0 LANGUAGES C CXX)
+project(readStep VERSION 0.1.0 LANGUAGES CXX)
 
 add_executable(readStep main.cpp)
 
@@ -9,4 +9,4 @@ find_package(OpenCASCADE REQUIRED)
 
 include_directories(${OpenCASCADE_INCLUDE_DIR})
 
-link_libraries(makeBox ${OpenCASCADE_LIBRARIES})
+target_link_libraries(readStep ${OpenCASCADE_LIBRARIES})

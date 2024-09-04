@@ -3,4 +3,6 @@
      함수
           : IVAl = 설정의 이름을 문자열로 받아 해당 설정의 현재 값을 정수로 반환.
      설정 이름
-          : read.precision.mode = 읽기 작업의 정밀도와 관련된 설정 항목.
+          : read.precision.mode = 읽기 작업의 정밀도와 관련된 설정 항목, 기본 값 : 0 (Step 파일에서 가져온 값)
+          : read.precision.val = 원하는 값으로 정밀도 수정 가능, 기본 값 :  0.0001
+          : read.maxprecision.val = 모양의 최대 허용 오차
