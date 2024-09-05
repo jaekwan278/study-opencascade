@@ -6,7 +6,7 @@
 using namespace std;
 int main(int argc, const char* argv[]){
 
-    const string fileDir = "/Users/jaekwan/WorkSpace/Cpp/opencascadeTest/study-opencascade/readStep/testFile/";
+    const string fileDir = "/Users/jaekwan/WorkSpace/Cpp/opencascadeTest/study-opencascade/testFile/";
 
     if(argc < 2){
         cerr << "Step File Not Foud" << endl;
