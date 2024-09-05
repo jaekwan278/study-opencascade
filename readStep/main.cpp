@@ -4,19 +4,27 @@
 
 
 using namespace std;
-int main(){
-    
-    Standard_CString testFile = "/Users/jaekwan/WorkSpace/Cpp/opencascadeTest/study-opencascade/readStep/testFile/curve.step";
+int main(int argc, const char* argv[]){
 
+    const string fileDir = "/Users/jaekwan/WorkSpace/Cpp/opencascadeTest/study-opencascade/readStep/testFile/";
+
+    if(argc < 2){
+        cerr << "Step File Not Foud" << endl;
+        return 1;
+    }
+    
+    string fileName = fileDir + argv[1];
+    
     // 파일읽기 관련 에러 메시지 mode : STEP 엔티티당 모든 메시지의 순차적 목록 제공.
     IFSelect_PrintCount mode = IFSelect_ItemsByEntity;
 
     STEPControl_Reader reader;
-    // 파일 읽기와 데이터 전송 작업의 상태를 나타내는 열거형.
-    IFSelect_ReturnStatus status = reader.ReadFile(testFile);
+    // 파일 읽기와 데이터 전송 작업의 상태를 나타내는 열거형.   
+    IFSelect_ReturnStatus status = reader.ReadFile(fileName.c_str());
 
-    // if ( status == IFSelect_RetDone){
-    //     cout << "@ read success" << endl;
+    if ( status == IFSelect_RetDone){
+        cout << "@ read success" << endl;
+    }
     // }else if(status == IFSelect_RetError){
     //     cout << "@ read fail" << endl;
     // }else if(status == IFSelect_RetVoid){
@@ -67,6 +75,7 @@ int main(){
     Standard_Integer surfaceCurveMode = Interface_Static::IVal("read.surfacecurve.mode");
 
     //6. 하나의 모서리가 두 면에서 공유될 때 모서리의 규칙 ( 두면이 연결된 각도 )
+    // 각도의 정밀도 값 0.01 : Ex) 45.067 >> 45.07 로 조정.
     // (0.01)
     Standard_Real regularityAngle = Interface_Static::RVal("read.encoderegularity.angle");
 
@@ -91,8 +100,8 @@ int main(){
 
     //11. step파일 내에 단일 제품에 대한 두 개 이상의 표현(여러개의 PRODUCT_DEFINITION_SHAPE)이 있는경우 모양에 대한 선호 표현 유형 지정
     // 1(전체) – 모든 표현을 번역합니다(두 개 이상인 경우 합성어로 넣습니다).
-    // 2(ABSR) - ADVANCED_BREP_SHAPE_REPRESENTATION을 선호합니다. ( BREP )
-    // 3(MSSR) – MANIFOLD_SURFACE_SHAPE_REPRESENTATION을 선호합니다. ( 다면체 )
+    // 2(ABSR) - ADVANCED_BREP_SHAPE_REPRESENTATION을 선호합니다. ( BREP : 3D모델을 경계로 정의, 표면과 경계를 설명하여 그 형태를 정의. )
+    // 3(MSSR) – MANIFOLD_SURFACE_SHAPE_REPRESENTATION을 선호합니다. ( 연속적이고 봉합된 표면 : 매끄럽고 끊김이 없는 표면 )
     // 4(GBSSR) – 기하학적으로 경계가 있는 표면 모양 표현을 선호합니다.
     // 5(FBSR) – FACETTED_BREP_SHAPE_REPRESENTATION을 선호합니다. ( 형상을 다면체로 나눔, 형상을 삼각형 또는 사각형의 면으로 나누어 표현 )
     // 6(EBWSR) – EDGE_BASED_WIREFRAME_SHAPE_REPRESENTATION을 선호합니다. ( 엣지와 선으로만 표현 )
@@ -132,6 +141,45 @@ int main(){
 
     //16. 테셀레이션 관련 설정 / 테셀레이션 : 복잡한 기하학적 형상을 삼각형 또는 다각형으로 변환하는 기술.
     // (0) 켜짐
+
+    // 변환
+
+    // 변환 가능 루트 개체
+    // PRODUCT_DEFINITION
+    // NEXT_ASSEMBLY_USAGE_OCCURRENCE
+    // SHAPE_DEFINITION_REPRESENTATION
+    // SUBTYPES_OF_SHAPE_REPRESENTATION (ONLY_IF_REFERRED_REPRESENTATION_IS_TRANSFERABLE)
+    // MANIFOLD_SOLID_BREP
+    // BREP_WITH_VOIDS
+    // FACETED_BREP
+    // FACETED_BREP_AND_BREP_WITH_VOIDS
+    // SHELL_BASED_SURFACE_MODEL
+    // GEOMETRIC_SET_AND_GEOMETRIC_CURVE_SET
+    // MAPPED_ITEM
+    // SUBTYPES_OF_FACE_SURFACE (INCLUDING_ADVANCED_FACE)
+    // SUBTYPES_OF_SHAPE_REPRESENTATION_RELATIONSHIP
+    // CONTEXT_DEPENDENT_SHAPE_REPRESENTATION
+    // TESSELLATED_SHAPE_REPRESENTATION
+    // TESSELLATED_SHELL
+    // TESSELLATED_SOLID
+    // TRIANGULATED_FACE
+    // COMPLEX_TRIANGULATED_FACE
+
+    // 변환 방법
+    // Standard_Boolean ok = reader.TransferRoot(rank) – 순위로 식별된 루트 엔터티를 반환, 루트 엔티티만 처리.
+    // Standard_Boolean ok = reader.TransferOne(rank) – 순위로 식별된 엔터티를 반환, 루트가 아닌 다른 엔티티 처리 가능.
+    // Standard_Integer num = reader.TransferList(list) – list에 포함된 엔티티 목록을 반환
+    // Standard_Integer NbRoots = reader.NbRootsForTransfer() - 모든 전송 가능한 루트를 반환.
+    // Standard_Integer num = reader.TransferRoots() – 위와 동일.
+
+    // 변환 결과
+    // Standard_Integer num = reader.NbShapes() – 결과에 기록된 모양의 수를 가져옴.
+    // TopoDS_Shape shape = reader.Shape(rank) – 1과 NbShapes 사이의 정수인 순위로 식별된 결과를 가져옴.
+    // TopoDS_Shape shape = reader.Shape() – 번역의 첫 번째 결과를 가져옴.
+    // TopoDS_Shape shape = reader.OneShape() – 모든 결과를 단일 모양으로 가져옵니다.
+    // 결과가 없으면 null 모양.
+    // 단일 결과의 경우 해당 결과에 특정한 모양.
+    // 결과가 여러 개 있는 경우 결과를 나열하는 화합물.
     
     return 0;
 }
